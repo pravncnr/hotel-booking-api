@@ -5,6 +5,7 @@ export class BookingController {
   // Create a booking
   static async createBooking(req: Request, res: Response) {
     const { userId, hotelId, rooms, checkin, checkout } = req.body;
+    console.log("here", checkin, checkout, req.body)
     try {
       const booking = await BookingService.createBooking({user_id: userId, hotel_id: hotelId, rooms, checkin: new Date(checkin), checkout: new Date(checkout)});
       res.status(201).json(booking);

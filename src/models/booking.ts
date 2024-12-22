@@ -61,11 +61,11 @@ export default (sequelize: Sequelize) => {
                 allowNull: false,
             },
             checkin: {
-                type: DataTypes.DATE,
+                type: DataTypes.DATEONLY,
                 allowNull: false,
             },
             checkout: {
-                type: DataTypes.DATE,
+                type: DataTypes.DATEONLY,
                 allowNull: false,
             },
             created_at: {

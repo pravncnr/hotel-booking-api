@@ -27,8 +27,7 @@ CREATE TABLE "booking" (
     checkin DATE NOT NULL,
     checkout DATE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT check_dates CHECK (checkout > checkin)
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Optional: Add indexes for common queries
