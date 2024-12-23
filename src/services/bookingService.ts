@@ -10,6 +10,21 @@ export class BookingService {
     checkout: Date;
   }) {
     try {
+      // Validate rooms
+      if (bookingData.rooms <= 0) {
+        throw new Error('Rooms must be a positive integer');
+      }
+
+      // Validate that checkin is before checkout
+      if (bookingData.checkin >= bookingData.checkout) {
+        throw new Error('Check-in date must be before checkout date');
+      }
+
+      // Validate hotel and user IDs
+      if (!bookingData.hotel_id || !bookingData.user_id) {
+        throw new Error('Hotel ID and User ID must be provided');
+      }
+
       const booking = await Booking.create({
         ...bookingData,
         id: null,
@@ -45,6 +60,10 @@ export class BookingService {
     try {
       const booking = await Booking.findByPk(bookingId);
       if (booking) {
+        // Validate the dates again before updating
+        if (updateData.checkin && updateData.checkout && updateData.checkin >= updateData.checkout) {
+          throw new Error('Check-in date must be before checkout date');
+        }
         await booking.update(updateData);
         return booking;
       } else {
