@@ -24,3 +24,6 @@ Ensure .env file is having postgres connection details, if not give credentials 
 Start the Server:
 
 `npm run dev`
+
+Post collection for testing api available at
+`hotel-api-postman-collection.json`
